@@ -3,7 +3,7 @@ import java.util.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+//import java.security.SecureRandom;
 import java.math.BigInteger;
 
 /* The goal of the code provided below is to convert passwords into salted, hashed passwords.
@@ -24,6 +24,7 @@ public class hashingtestingv2 {
         PasswordRandomizer generate = new PasswordRandomizer();
         DateAndTime dt = new DateAndTime();
         PasswordStorage storage = new PasswordStorage();
+        PasswordCheckingAlgorithm check = new PasswordCheckingAlgorithm();
 
         String password = generate.randomize(count);
         String hashed = hashString(password);
@@ -32,6 +33,7 @@ public class hashingtestingv2 {
 
         System.out.println("The ORIGINAL password, "+ password +", was created on "+date);
         System.out.println("The HASHED password, "+ hashed +", was created on "+date);
+        System.out.println(check.ratePassword(password));
 
         scan.close();
     }
@@ -52,7 +54,7 @@ public class hashingtestingv2 {
 
     public static String conversion(byte[] hash) {
         //Generating random bytes:
-        SecureRandom random = new SecureRandom();
+        //SecureRandom random = new SecureRandom();
         //byte[] salt = new byte[SALT_LENGTH];
         //random.nextBytes(salt);
 
