@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.math.BigInteger;
 
-/* The goal of the code provided below is to convert passwords into salted hash passwords.
+/* The goal of the code provided below is to convert passwords into salted, hashed passwords.
  * When the passwords are stored, it will be stored in the hashed format.
  * The combination of using a SHA-512 hash algorithm with an added randomized salt makes password hacking extremely difficult.
  */
@@ -23,10 +23,12 @@ public class hashingtestingv2 {
 
         PasswordRandomizer generate = new PasswordRandomizer();
         DateAndTime dt = new DateAndTime();
+        PasswordStorage storage = new PasswordStorage();
 
         String password = generate.randomize(count);
         String hashed = hashString(password);
         String date = dt.getDate_Time(password);
+        storage.processFile(hashed);
 
         System.out.println("The ORIGINAL password, "+ password +", was created on "+date);
         System.out.println("The HASHED password, "+ hashed +", was created on "+date);
