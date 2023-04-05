@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -15,6 +14,25 @@ import java.math.BigInteger;
 public class hashingtestingv2 {
     //private static final int SALT_LENGTH = 16;
     //private static final int ITERATIONS = 100000;
+
+    // just doing some testing:
+    public static void main(String[]args) throws Exception {
+        Scanner scan = new Scanner(System.in);
+
+        int count = scan.nextInt();
+
+        PasswordRandomizer generate = new PasswordRandomizer();
+        DateAndTime dt = new DateAndTime();
+
+        String password = generate.randomize(count);
+        String hashed = hashString(password);
+        String date = dt.getDate_Time(password);
+
+        System.out.println("The ORIGINAL password, "+ password +", was created on "+date);
+        System.out.println("The HASHED password, "+ hashed +", was created on "+date);
+
+        scan.close();
+    }
 
     public static byte[] obtainSHA(String input) throws NoSuchAlgorithmException {
         // Create a new MessageDigest object using the SHA-256 hashing algorithm
