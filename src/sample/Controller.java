@@ -79,7 +79,7 @@ public class Controller implements Initializable {
                 public void changed(ObservableValue<? extends Password> observableValue, Password password, Password t1) {
 
                     currentPassword = listView.getSelectionModel().getSelectedItem();
-                    dateLabel.setText("Date Created " + currentPassword.getTimeCreated());
+                    dateLabel.setText("Date Created: " + currentPassword.getTimeCreated());
                     keyLabel.setText("Key: " + currentPassword.getKey());
                     passwordLabel.setText("Password: " + currentPassword.getName());
 
