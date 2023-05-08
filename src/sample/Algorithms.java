@@ -54,17 +54,15 @@ public class Algorithms {
     }
 
     public static String hashString(String input) throws NoSuchAlgorithmException {
-        String hashed = conversion(obtainSHA(input));
-        return hashed;
+        return conversion(obtainSHA(input));
     }
 
     //input variable can be anything, I just needed to make a String method that returned a formatted date.
-    public static String getDate_Time(String str) throws Exception {
+    public static String getDate_Time() throws Exception {
         LocalDateTime currentDate_Time = LocalDateTime.now();
         //Desired Date/Time Format:
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy h:mm a");            //Format the current date and time
-        String formattedDate = currentDate_Time.format(formatter);
-        return formattedDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy h:mm a"); //Format the current date and time
+        return currentDate_Time.format(formatter);
     }
 
     public static String createPassword(int letterCount) {
@@ -139,5 +137,7 @@ public class Algorithms {
         }
         return strRating;
     }
+
+
 
 }
