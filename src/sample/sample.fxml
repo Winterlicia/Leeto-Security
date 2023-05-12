@@ -40,6 +40,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.text.Text?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -55,7 +56,8 @@
                                                 <Font name="MT Extra" size="18.0" fx:id="x1" />
                                             </font>
                                         </Label>
-                                        <ListView fx:id="listView" layoutX="11.0" layoutY="43.0" prefHeight="388.0" prefWidth="218.0" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="43.0" />
+                                        <TextField fx:id="searchField" layoutX="11.0" layoutY="42.0" promptText="Search..." prefWidth="202.0" prefHeight="25.0" />
+                                        <ListView fx:id="listView" layoutX="11.0" layoutY="73.0" prefHeight="357.0" prefWidth="218.0" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="73.0" />
                                         <Label layoutX="10.0" layoutY="438.0" text="Create:" underline="true" AnchorPane.bottomAnchor="113.63078541772649" AnchorPane.leftAnchor="10.0">
                                             <font>
                                                 <Font size="14.0" />
@@ -158,6 +160,12 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
+                                <Label fx:id="ratingTitle" layoutX="19.0" layoutY="135.0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Text fx:id="recommendedList" layoutX="19.0" layoutY="175.0" />
                             </children>
                         </AnchorPane>
                     </content>
