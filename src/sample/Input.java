@@ -37,7 +37,7 @@ public class Input {
                 String generatedPassword = Algorithms.createPassword(5);
                 String time;
                 try {
-                    time = Algorithms.getDate_Time("");
+                    time = Algorithms.getDate_Time();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
