@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
  * @author clee2
  */
 public class Algorithms {
+    //Method to return the SHA-256 hash of the string as a byte array:
     public static byte[] obtainSHA(String input) throws NoSuchAlgorithmException {
         // Create a new MessageDigest object using the SHA-256 hashing algorithm
         MessageDigest md = MessageDigest.getInstance("SHA-256"); //might need to change this to SHA-1 for length purposes.
@@ -29,27 +30,19 @@ public class Algorithms {
 
     }
     public static String conversion(byte[] hash) {
-        //Generating random bytes:
-        //SecureRandom random = new SecureRandom();
-        //byte[] salt = new byte[SALT_LENGTH];
-        //random.nextBytes(salt);
 
-        //Convert the byte array in the signum representation
+        //Convert the byte array in the signum representation and puts the byte array into a binary representation
+        //Set signum to '1' to always return a positive value
         //BigInteger class to perform operators on large integers, such as the ones used in this code.
         BigInteger num = new BigInteger(1, hash);
 
-        // Create a new StringBuilder object to build the large hashed string / convert message digest to hex value
+        // Create a new StringBuilder object to build the large hashed string / convert message digest to a hexadecimal value
         StringBuilder convert = new StringBuilder(num.toString(16));
 
-        //Padding with the leading zeros
+        //Padding with the leading zeros if necessary; usually never necessary since hashedBytes will always contain the SHA hash representation
         while (convert.length() < 32) {
             convert.insert(0, '0');
         }
-
-        //MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        //String encodedSalt = Base64.getEncoder().encodeToString(salt);
-
-        //System.out.println(convert.toString());
         return convert.toString();
     }
 

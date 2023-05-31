@@ -12,7 +12,8 @@ public class Recommendations {
             recommended.add("Increase the length of your password.");
         }
 
-        if (!password.matches(".*[\\p{Punct}].*")) {
+        if (!password.matches(".*[\\p{Punct}].*")
+        ) {
             recommended.add("Add at least one set of punctuation such as '!' or '$' to your password.");
         }
 

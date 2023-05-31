@@ -9,10 +9,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.*;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -63,7 +70,7 @@ public class Controller implements Initializable {
     PasswordField PasswordCheckField;
 
     @FXML
-    TextField searchField;
+    TextField searchField = new TextField("Search...");
 
     Password currentPassword;
 
@@ -119,11 +126,10 @@ public class Controller implements Initializable {
                 listView.setItems(FXCollections.observableArrayList(filteredPasswords));
             });
 
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
     }
@@ -165,9 +171,9 @@ public class Controller implements Initializable {
             List<String> PasswordNames = passwords.stream()
                     .map(Password::getName)
                     .collect(Collectors.toList());
+
             if (FileIO.exists(newPassword, PasswordNames)) {
                 CreatePasswordButton.setText("Password Already Exists");
-                //Might want to create PauseTransition class
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> CreatePasswordButton.setText("Create Secure Password"));
                 pause.play();
@@ -176,6 +182,17 @@ public class Controller implements Initializable {
             listView.getItems().addAll(passwords);
 
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void copyButtonButtonClick(ActionEvent actionEvent) throws NoSuchAlgorithmException {
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        try {
+            String pass = currentPassword.returnHashed(currentPassword.key);
+            clipboard.setContents(new StringSelection(pass), new StringSelection(pass));
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
@@ -247,4 +264,44 @@ public class Controller implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    public void DeletePassword(ActionEvent actionEvent) {
+        try {
+            listView.requestFocus();
+            Password currentPassword = listView.getSelectionModel().getSelectedItem();
+
+            //Get all the current passwords in the listView
+            List<Password> passwordList = listView.getItems();
+            listView.setOnKeyPressed(event -> {
+                // Check if the pressed key is the Delete key
+                if (currentPassword != null && event.getCode() == KeyCode.DELETE) {
+                    for (int i = 0; i < passwordList.size(); i++) {
+                        if ((passwordList.get(i)).equals(currentPassword)) {
+
+                            //Delete the .dat file, change filePath according to the person using it
+                            String filePath = "C:\\Users\\kaden\\OneDrive\\Desktop\\Chem CPT Projects"+currentPassword.getName()+".dat";
+                            File file = new File(filePath);
+
+                            if (file.exists()) {
+                                try {
+                                    if (file.delete()) {
+                                        System.out.println("Successfully deleted: "+currentPassword.getName());
+                                    } else {
+                                        System.out.println("Not able to be deleted");
+                                    }
+                                } catch (SecurityException e) {
+                                    System.out.println("Failed to delete the file: " + e.getMessage());
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            //Update the Password List on the ListView:
+            listView.setItems(createPasswordList());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
