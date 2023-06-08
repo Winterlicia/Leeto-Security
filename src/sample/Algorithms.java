@@ -10,10 +10,6 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author clee2
- */
 public class Algorithms {
     //Method to return the SHA-256 hash of the string as a byte array:
     public static byte[] obtainSHA(String input) throws NoSuchAlgorithmException {
