@@ -27,10 +27,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author clee2
- */
 public class Controller implements Initializable {
 
     @FXML
