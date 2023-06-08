@@ -8,10 +8,6 @@ package sample;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 
-/**
- *
- * @author clee2
- */
 public class Password implements Serializable{
     String name;
     String key;
