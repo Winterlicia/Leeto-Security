@@ -27,7 +27,8 @@ This project aims to protect them by providing a non-complicated app that can ea
 - Recommendations to improve passwords is an additional feature as well.
 
 ## Report
-You may read the rest of the report here:
+Read the rest of the report here: 
+<br>
 [Report PDF](LeetoSecurityReport.pdf)
 
 <br>
