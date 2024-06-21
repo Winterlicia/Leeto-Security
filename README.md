@@ -4,6 +4,8 @@
   <img src="./src/leetosecuritylogo.png">
 </div>
 
+<br>
+
 <div align="center">
   Leeto Security is a JavaFX Application designed for the elderly to help store and create secure passwords, protecting them from cybersecurity threats using advanced hashing algorithms.
 </div>
@@ -28,6 +30,7 @@ This project aims to protect them by providing a non-complicated app that can ea
 You may read the rest of the report here:
 [Report PDF](./Chem CPT Report - Kaden S, Christopher L.pdf)
 
-#### This project was done in collaboration with Christopher Lee (@thewhitelisted)
+<br>
+### This project was done in collaboration with Christopher Lee (@thewhitelisted)
  
 
