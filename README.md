@@ -21,11 +21,12 @@ This project aims to protect them by providing a non-complicated app that can ea
     - Therefore, the password in itself is impossible to crack, and the key is impossible to find as well since hashing algorithms are irreversible.
   - Password data is then stored in .dat files which are ineligible, and hard to gain access to.
 <br>
+
 - Recommendations to improve passwords is an additional feature as well.
 
 ## Report
 You may read the rest of the report here:
-
+[Report PDF](./Chem CPT Report - Kaden S, Christopher L.pdf)
 
 #### This project was done in collaboration with Christopher Lee (@thewhitelisted)
  
