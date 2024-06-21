@@ -28,7 +28,7 @@ This project aims to protect them by providing a non-complicated app that can ea
 
 ## Report
 You may read the rest of the report here:
-[Report PDF](./Chem CPT Report - Kaden S, Christopher L.pdf)
+[Report PDF](LeetoSecurityReport.pdf)
 
 <br>
 ### This project was done in collaboration with Christopher Lee (@thewhitelisted)
